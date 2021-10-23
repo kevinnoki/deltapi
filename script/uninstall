@@ -1,0 +1,15 @@
+#! /bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "=> Stopping Delta-Pi Service...\n"
+sudo update-rc.d delta-pi-service-start.sh remove
+sudo /etc/init.d/delta-pi-service-start.sh stop
+
+echo "=> Removing Delta-Pi Service...\n"
+sudo rm -rf /usr/local/bin/delta-pi-powerbutton.py 
+sudo rm -rf /etc/init.d/delta-pi-powerbutton.py
+
+echo "Delta-Pi Service uninstalled.\n"
