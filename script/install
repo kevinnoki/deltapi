@@ -1,0 +1,24 @@
+#! /bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "=> Installing Delta Pi Powerbutton...\n"
+sudo cp delta-pi-powerbutton.py /usr/local/bin/
+sudo chmod +x /usr/local/bin/delta-pi-powerbutton.py
+
+echo "=> Starting Delta Pi Powerbutton Service...\n"
+sudo cp delta-pi-service-start.sh /etc/init.d/
+sudo chmod +x /etc/init.d/delta-pi-service-start.sh
+
+echo "=> Installing Delta Pi Fan & LED...\n"
+sudo cp delta-pi-fan-led.py /home/pi
+sudo echo 'sudo python /home/pi/delta-pi-fan-led.py' >> /etc/profile
+
+sudo update-rc.d delta-pi-service-start.sh defaults
+sudo /etc/init.d/delta-pi-service-start.sh start
+
+echo "Delta Pi Features Installed.\n"
+echo "You need to restart your system to make the changes work"
+echo "You need to restart your system to make the changes work"
