@@ -13,8 +13,8 @@ sudo cp delta-pi-service-start.sh /etc/init.d/
 sudo chmod +x /etc/init.d/delta-pi-service-start.sh
 
 echo "=> Installing Delta Pi Fan & LED...\n"
-sudo cp delta-pi-fan-led.py /home/pi
-sudo echo 'sudo python /home/pi/delta-pi-fan-led.py' >> /etc/profile
+sudo cp delta-pi-fan-led.py /home
+sudo echo 'sudo python /home/delta-pi-fan-led.py' >> /etc/profile
 
 sudo update-rc.d delta-pi-service-start.sh defaults
 sudo /etc/init.d/delta-pi-service-start.sh start
